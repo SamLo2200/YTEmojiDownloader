@@ -2,7 +2,6 @@ function downloadImage(url) {
     let filename = url.substring(url.lastIndexOf('/') + 1);
 
     // Obtain emoji image file
-
     fetch(url)
         .then(response => response.blob())
         .then(blob => {
@@ -22,7 +21,11 @@ function downloadImage(url) {
 
 let emojiElements = document.querySelectorAll("#images-line .ytd-sponsorships-perk-renderer .yt-img-shadow");
 
-emojiElements.forEach(function(emoji) {
+emojiElements.forEach(function (emoji, index) {
     let emojiUrl = emoji.currentSrc;
-    downloadImage(emojiUrl);
+
+    setTimeout(() => {
+        downloadImage(emojiUrl);
+    }, index * 1000);
+
 });
